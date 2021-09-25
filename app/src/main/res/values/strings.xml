@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="e_mail">E-mail</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="nos_autoevaluamos">NOS AUTOEVALUAMOS</string>
+    <string name="para_seguir_creciendo">PARA SEGUIR CRECIENDO</string>
+    <string name="jugar">JUGAR</string>
+</resources>
