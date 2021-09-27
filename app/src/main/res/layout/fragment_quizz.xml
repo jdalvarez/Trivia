@@ -37,7 +37,77 @@
         style="?android:attr/progressBarStyleHorizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_question"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        app:layout_constraintBottom_toTopOf="@id/firstOption"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/firstOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="first question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        android:layout_margin="16dp"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:background="@drawable/rectangle"/>
+
+    <TextView
+        android:id="@+id/secondOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="second question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstOption"
+        android:layout_margin="16dp"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:background="@drawable/rectangle"/>
+
+    <TextView
+        android:id="@+id/thirdOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="second question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondOption"
+        android:layout_margin="16dp"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:background="@drawable/rectangle"/>
+
+    <TextView
+        android:id="@+id/fourOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="second question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thirdOption"
+        android:layout_margin="16dp"
+        android:padding="15dp"
+        android:textSize="18sp"
+        android:background="@drawable/rectangle"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_jugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
+        android:text="@string/enviar"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_margin="16dp"
+        android:height="65dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fourOption"
+        />
+
 
 
 
