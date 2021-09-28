@@ -6,140 +6,228 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.FormScreenFragment"
-    android:padding="30dp"
-    android:background="@drawable/fondopng">
+    android:padding="30dp">
 
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_form"
+    <ImageView
+        android:id="@+id/ivFondo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
+        android:src="@drawable/fondo_coneau"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/evInst"
+        android:layout_marginTop="55dp"/>
+
+    <ImageView
+        android:id="@+id/evInst"
+        android:layout_width="250dp"
+        android:layout_height="110dp"
+        android:src="@drawable/epositivaicon"
+        app:layout_constraintStart_toStartOf="@id/ivFondo"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:alpha="0.9"
-        app:cardCornerRadius="20dp">
+        android:layout_marginStart="50dp" />
 
-        <LinearLayout
+    <TextView
+        android:id="@+id/autoevaluamos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nos_autoevaluamos"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/gray"
+        android:layout_marginStart="60dp"
+        app:layout_constraintStart_toStartOf="@id/ivFondo"
+        app:layout_constraintTop_toBottomOf="@id/evInst"/>
+
+    <TextView
+        android:id="@+id/seguircreciendo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/para_seguir_creciendo"
+        android:textSize="28sp"
+        android:layout_marginStart="60dp"
+        android:textColor="@color/green"
+        app:layout_constraintStart_toStartOf="@id/ivFondo"
+        app:layout_constraintTop_toBottomOf="@id/seguirAprendiendo"/>
+
+    <TextView
+        android:id="@+id/seguirAprendiendo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/para_seguir_aprendiendo"
+        android:textSize="28sp"
+        android:layout_marginStart="60dp"
+        android:textColor="@color/green"
+        app:layout_constraintStart_toStartOf="@id/ivFondo"
+        app:layout_constraintTop_toBottomOf="@id/autoevaluamos"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nombre"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivFondo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="20dp">
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            app:hintEnabled="false"
+            android:importantForAutofill="no"/>
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="@string/bienvenido"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nos_autoevaluamos"
-               android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/gray"
-                android:layout_gravity="start"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/para_seguir_creciendo"
-                android:textSize="23sp"
-                android:layout_gravity="start"
-                android:textColor="@color/green"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name_layout"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lastName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/apellido"
+        android:layout_marginTop="8dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            app:hintEnabled="false"
+            android:importantForAutofill="no"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dni_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dni"
+        android:layout_marginTop="8dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lastName_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_DNI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            app:hintEnabled="false"
+            android:importantForAutofill="no"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/e_mail"
+        android:layout_marginTop="8dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dni_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            app:hintEnabled="false"
+            android:importantForAutofill="no"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SpinnerLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Carrera"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_layout">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/spnCarreras"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nombre"
-                android:layout_marginTop="60dp"
-                android:backgroundTint="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                android:clickable="true"
+                tools:ignore="KeyboardInaccessibleWidget" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    app:hintEnabled="false"
-                    android:importantForAutofill="no"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+    <RadioGroup
+        android:id="@+id/modalidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/SpinnerLayout"
+        app:layout_constraintTop_toBottomOf="@id/SpinnerLayout"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modalidad:"
+            android:textColor="@color/gray"
+            android:textSize="18sp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lastName_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/apellido"
-                android:layout_marginTop="8dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <RadioButton
+            android:id="@+id/Presencial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Presencial"
+            android:textColor="@color/gray"/>
+        <RadioButton
+            android:id="@+id/Distancia"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A Distancia"
+            android:textColor="@color/gray"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_lastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    app:hintEnabled="false"
-                    android:importantForAutofill="no"/>
+    </RadioGroup>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/e_mail"
-                android:layout_marginTop="8dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    app:hintEnabled="false"
-                    android:importantForAutofill="no"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_jugar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/green"
-                android:text="@string/jugar"
-                android:layout_marginTop="16dp"/>
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_jugar"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
+        android:text="@string/jugar"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/modalidad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edpos"/>
 
     <ImageView
         android:id="@+id/edpos"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:src="@drawable/educacionpositiva"
-        tools:layout_editor_absoluteX="60dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/siglo"
+        app:layout_constraintTop_toBottomOf="@id/btn_jugar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView
         android:id="@+id/siglo"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:src="@drawable/sigloxxi"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@id/edpos"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_jugar"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

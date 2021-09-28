@@ -9,4 +9,10 @@
     <string name="para_seguir_creciendo">PARA SEGUIR CRECIENDO</string>
     <string name="jugar">JUGAR</string>
     <string name="enviar">Enviar</string>
+    <string name="verdadero">Verdadero</string>
+    <string name="falso">Falso</string>
+    <string name="para_seguir_aprendiendo">PARA SEGUIR APRENDIENDO,</string>
+    <string name="dni">DNI</string>
+    <string name="username">Username:</string>
+    <string name="score">Score:</string>
 </resources>

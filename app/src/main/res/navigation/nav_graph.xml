@@ -18,5 +18,21 @@
         android:id="@+id/quizzFragment"
         android:name="com.jdalvarez.quizapp.ui.QuizzFragment"
         android:label="fragment_quizz"
-        tools:layout="@layout/fragment_quizz" />
+        tools:layout="@layout/fragment_quizz" >
+        <action
+            android:id="@+id/action_quizzFragment_to_finishScreenFragment"
+            app:destination="@id/finishScreenFragment" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishScreenFragment"
+        android:name="com.jdalvarez.quizapp.ui.FinishScreenFragment"
+        android:label="fragment_finish_screen"
+        tools:layout="@layout/fragment_finish_screen" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
 </navigation>

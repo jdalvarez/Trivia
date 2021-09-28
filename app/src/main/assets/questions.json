@@ -1,139 +1,83 @@
 {
   "questions": [
     {
-      "alcance": "Introduccion",
-      "questionText": "Pregunta 1 de cualquier cosa",
-      "answer": [
-        {
-          "answerText": "Respuesta 1",
-          "id": 0
-        },
-        {
-          "answerText": "Respuesta 2",
-          "id": 1
-        },
-        {
-          "answerText": "Respuesta 3",
-          "id": 2
-        },
-        {
-          "answerText": "Respuesta 4",
-          "id": 3
-        },
-        {
-          "answerText": "Respuesta 5",
-          "id": 4
-        }
-      ],
-      "rightAnswer": 3
+      "alcance": "",
+      "questionText": "El propósito de la universidad siglo 21 es Potenciar el liderazgo de las personas para construir un mundo mejor, evolucionando la educación”",
+      "answer": true,
+      "rightAnswer": "Verdadero"
     },
     {
-      "alcance": "general",
-      "questionText": "Pregunta 2 de cualquier cosa",
-      "answer": [
-        {
-          "answerText": "Respuesta 1",
-          "id": 0
-        },
-        {
-          "answerText": "Respuesta 2",
-          "id": 1
-        },
-        {
-          "answerText": "Respuesta 3",
-          "id": 2
-        },
-        {
-          "answerText": "Respuesta 4",
-          "id": 3
-        },
-        {
-          "answerText": "Respuesta 5",
-          "id": 4
-        }
-      ],
-      "rightAnswer": 2
+      "alcance": "",
+      "questionText": "La cantidad de ciudades del territorio nacional con presencia de CAUS es de 310",
+      "answer": true,
+      "rightAnswer": "Verdadero"
     },
     {
-      "alcance": "payasos",
-      "questionText": "Pregunta 3 de cualquier cosa",
-      "answer": [
-        {
-          "answerText": "Respuesta 1",
-          "id": 0
-        },
-        {
-          "answerText": "Respuesta 2",
-          "id": 1
-        },
-        {
-          "answerText": "Respuesta 3",
-          "id": 2
-        },
-        {
-          "answerText": "Respuesta 4",
-          "id": 3
-        },
-        {
-          "answerText": "Respuesta 5",
-          "id": 4
-        }
-      ],
-      "rightAnswer": 4
+      "alcance": "",
+      "questionText": "El primer egresado de la Universidad se graduó en el año 1995",
+      "answer": true,
+      "rightAnswer": "Verdadero"
     },
     {
-      "alcance": "esa si",
-      "questionText": "Pregunta 4 de cualquier cosa",
-      "answer": [
-        {
-          "answerText": "Respuesta 1",
-          "id": 0
-        },
-        {
-          "answerText": "Respuesta 2",
-          "id": 1
-        },
-        {
-          "answerText": "Respuesta 3",
-          "id": 2
-        },
-        {
-          "answerText": "Respuesta 4",
-          "id": 3
-        },
-        {
-          "answerText": "Respuesta 5",
-          "id": 4
-        }
-      ],
-      "rightAnswer": 0
+      "alcance": "",
+      "questionText": "La modalidad que mayor cantidad de alumnos tiene es la presencial.",
+      "answer": false,
+      "rightAnswer": "Falso. La mayor cantidad de alumnos cursa modalidad a distancia. Es el 90 % del total de alumnos arancelados."
     },
     {
-      "alcance": "Introduccion",
-      "questionText": "Pregunta 5 de cualquier cosa",
-      "answer": [
-        {
-          "answerText": "Respuesta 1",
-          "id": 0
-        },
-        {
-          "answerText": "Respuesta 2",
-          "id": 1
-        },
-        {
-          "answerText": "Respuesta 3",
-          "id": 2
-        },
-        {
-          "answerText": "Respuesta 4",
-          "id": 3
-        },
-        {
-          "answerText": "Respuesta 5",
-          "id": 4
-        }
-      ],
-      "rightAnswer": 1
+      "alcance": "",
+      "questionText": "La oferta de APLV (APRENDIZAJE PARA LA VIDA) consiste en programas no tradicionales con atención a las demandas emergentes del mundo productivo",
+      "answer": true,
+      "rightAnswer": "Verdadero"
+    },
+    {
+      "alcance": "",
+      "questionText": "La oferta de APLV (APRENDIZAJE PARA LA VIDA) consiste en programas no tradicionales con atención a las demandas emergentes del mundo productivo",
+      "answer": true,
+      "rightAnswer": "Verdadero"
+    },
+    {
+      "alcance": "",
+      "questionText": "Las competencias institucionales de Siglo 21 son aspiracionales teóricos del perfil del egresado que se desea promover",
+      "answer": false,
+      "rightAnswer": "Falso. Las competencias institucionales perfilan egresados capaces de actuar estratégicamente de manera global, gestionando el conocimiento y trabajando colaborativamente, impactando con sus acciones en la resolución de problemas complejos con conciencia social"
+    },
+    {
+      "alcance": "",
+      "questionText": "Los centros de excelencia son 2: sustentabilidad e internacionalización",
+      "answer": false,
+      "rightAnswer": "Falso. Los estudiantes vivencian una experiencia de formación integral e integrada. A través de ella desarrollan competencias de emprendimiento e innovación, sustentabilidad social e internacionalización, ejes todos del propósito institucional y que se materializa a través de las acciones que realizan los  3 Centros de Excelencia"
+    },
+    {
+      "alcance": "",
+      "questionText": "El instituto de genero e inclusión se creo en el año 1995",
+      "answer": false,
+      "rightAnswer": "Falso. En 2018 se creó el Instituto de Género e Inclusión, siendo su objetivo principal orientar y asesorar a las autoridades de la Universidad en la implementación de políticas institucionales con impacto en la comunidad de estudiantes, docentes y no docentes, para que primen la inclusión y la equidad de género"
+    },
+    {
+      "alcance": "",
+      "questionText": "En el año 2010, se inaugura el Edificio Experimenta",
+      "answer": false,
+      "rightAnswer": "Falso. En el 2016 se inauguró el edificio conformado por ámbitos innovadores y por la implementación en el mismo de tecnologías con impacto efectivo y positivo sobre el proceso de aprendizaje colaborativo alineado a los desarrollos"
+    },
+    {
+      "alcance": "",
+      "questionText": "El servicio de biblioteca cuenta con con material disponible en físico y a través de e-books para el libre acceso en todo el país",
+      "answer": true,
+      "rightAnswer": "Verdadero"
+    },
+    {
+      "alcance": "",
+      "questionText": "La nube es un espacio destinado exclusivamente a estudiantes con información importante para el cursado",
+      "answer": true,
+      "rightAnswer": "Verdadero. De esta manera, se promueve que la comunicación sobre aspectos relevantes a su trayectoria académica sea garantizada a través de un medio tecnológico de fácil uso y acceso"
+    },
+    {
+      "alcance": "",
+      "questionText": "En la actualidad se desarrollan 113 proyectos de investigación en donde solo participaran investigadores",
+      "answer": false,
+      "rightAnswer": "FALSO. Participan + de 200  alumnos y + de 300 egresados en los diferentes tipos de proyectos de investigación."
     }
+
   ]
 }
