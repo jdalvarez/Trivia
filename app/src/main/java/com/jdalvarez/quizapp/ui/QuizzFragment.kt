@@ -88,7 +88,9 @@ class QuizzFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.btnFalse.isEnabled = !isLoading
+        binding.btnFalse.isClickable = !isLoading
         binding.btnTrue.isEnabled = !isLoading
+        binding.btnTrue.isClickable = !isLoading
     }
 
     private fun setupObservers() {
