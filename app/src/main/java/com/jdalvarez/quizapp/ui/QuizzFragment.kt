@@ -15,21 +15,24 @@ import com.google.android.material.button.MaterialButton
 import com.jdalvarez.quizapp.MainApplication
 import com.jdalvarez.quizapp.R
 import com.jdalvarez.quizapp.data.Question
+import com.jdalvarez.quizapp.presentation.QuestionResult
 import com.jdalvarez.quizapp.presentation.QuizzViewModelFactory
+import com.jdalvarez.quizapp.util.QuizConfig.QUESTIONS_NUMBER
 
 
 class QuizzFragment : Fragment() {
-    private val app by lazy { requireActivity().application  as MainApplication }
+
+    private val app by lazy { requireActivity().application as MainApplication }
     private val viewModel by viewModels<QuizzViewModel> { QuizzViewModelFactory(app.respository) }
     private lateinit var binding: FragmentQuizzBinding
-    private val args:QuizzFragmentArgs by navArgs()
+    private val args: QuizzFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentQuizzBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
         setOnClickListeners()
         setupUi()
         return binding.root
@@ -42,97 +45,94 @@ class QuizzFragment : Fragment() {
     }
 
     private fun setupUi() {
-        binding.score.setText("Score: 0/8")
         btnUnSelected(binding.btnFalse)
         btnUnSelected(binding.btnTrue)
         binding.username.text = args.email
     }
 
     private fun btnUnSelected(btn: MaterialButton) {
-        btn.apply{
+        btn.apply {
             setBackgroundResource(R.drawable.un_press_btn_bg)
             setTextColor(resources.getColor(R.color.green))
         }
     }
+
     private fun btnSelected(btn: MaterialButton) {
-        btn.apply{
+        btn.apply {
             setBackgroundResource(R.drawable.press_btn_bg)
             setTextColor(resources.getColor(R.color.white))
         }
     }
-    private fun loadQuestionData(currentQuestion:Question) {
-        binding.tvQuestion.setText(currentQuestion.questionText)
+
+    private fun loadQuestionData(currentQuestion: Question) {
+        binding.tvQuestion.text = currentQuestion.questionText
+        binding.tvRta.text = currentQuestion.rightAnswer
         btnUnSelected(binding.btnFalse)
         btnUnSelected(binding.btnTrue)
-
     }
 
-    private fun setOnClickListeners(){
+    private fun setOnClickListeners() {
         binding.btnTrue.setOnClickListener {
             btnSelected(binding.btnTrue)
             btnUnSelected(binding.btnFalse)
-            viewModel.checkAnswer(true)
+            viewModel.onUserAnswer(true)
 
         }
         binding.btnFalse.setOnClickListener {
             btnSelected(binding.btnFalse)
             btnUnSelected(binding.btnTrue)
-            viewModel.checkAnswer(false)
+            viewModel.onUserAnswer(false)
         }
 
     }
 
     private fun showLoading(isLoading: Boolean) {
+        binding.btnFalse.isEnabled = !isLoading
+        binding.btnTrue.isEnabled = !isLoading
     }
 
     private fun setupObservers() {
-        viewModel.scoreLiveData.observe(viewLifecycleOwner){
-            binding.score.setText("Score: $it/8")
+        viewModel.scoreLiveData.observe(viewLifecycleOwner) { binding.score.setText("Score: $it/${QUESTIONS_NUMBER}") }
+        viewModel.questionLiveData.observe(viewLifecycleOwner) { loadQuestionData(it) }
+        viewModel.loadingLiveData.observe(viewLifecycleOwner) {
+            showLoading(it)
         }
-
-        viewModel.questionLiveData.observe(viewLifecycleOwner) {
-            loadQuestionData(it)
-        }
-        viewModel.LoadingLiveData.observe(viewLifecycleOwner) {
-            // show/hide Loading on top of questions
-            // disable/enable next button
-        }
-        viewModel.navigateToFinishScreen.observe(viewLifecycleOwner){
-            finishQuizz(it)
-        }
-
-        viewModel.showAnswerLiveData.observe(viewLifecycleOwner){
-            showAnswer(it)
-        }
+        viewModel.navigateToFinishScreen.observe(viewLifecycleOwner) { finishQuizz(it) }
+        viewModel.questionResultLiveData.observe(viewLifecycleOwner) { showAnswer(it) }
     }
 
-    private fun showAnswer(showAnswer: Boolean) {
-        if(showAnswer) {
-            binding.tvRta.apply {
-                visibility = View.VISIBLE
-                setTextColor(Color.RED)
+    private fun showAnswer(questionResult: QuestionResult) {
+        when (questionResult) {
+            QuestionResult.RIGHT -> {
+                binding.tvRta.apply {
+                    visibility = View.VISIBLE
+                    setTextColor(Color.GREEN)
+                }
             }
-        } else {
-            binding.tvRta.apply {
-                visibility = View.INVISIBLE
-                setTextColor(Color.RED)
+            QuestionResult.WRONG -> {
+                binding.tvRta.apply {
+                    visibility = View.VISIBLE
+                    setTextColor(Color.RED)
+                }
+            }
+            QuestionResult.NONE -> {
+                binding.tvRta.visibility = View.INVISIBLE
             }
         }
     }
 
-
-    private fun toFinishScreen(email:String){
-        val toFinishAction = QuizzFragmentDirections.actionQuizzFragmentToFinishScreenFragment(email)
+    private fun toFinishScreen(email: String) {
+        val toFinishAction =
+            QuizzFragmentDirections.actionQuizzFragmentToFinishScreenFragment(email)
         findNavController().navigate(toFinishAction)
     }
 
-    private fun finishQuizz(finish:Boolean?){
-        if (finish!=null) {
-            if (finish){
+    private fun finishQuizz(finish: Boolean?) {
+        if (finish != null) {
+            if (finish) {
                 toFinishScreen(args.email)
             }
         }
-
     }
 
     private fun validateUserEntry(): Boolean {

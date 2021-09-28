@@ -5,6 +5,7 @@ import com.jdalvarez.quizapp.data.User
 
 interface Repository {
     fun getRandomQuestions(quantity: Int = 3): List<Question>?
+    fun loadUniveristyDegrees(): List<String>
 
     //firebase
     suspend fun saveUser(firstName: String, lastName: String, dni: String, email: String, carrera: String, modalidad:String, played:String)

@@ -6,8 +6,6 @@ data class Question(
     val alcance: String,
     val questionText: String,
     val answer: Boolean,
-    val rightAnswerId: String
+    val rightAnswer: String
 )
-
-data class Answer(val answerText: String, val correctAnswer: String)
 

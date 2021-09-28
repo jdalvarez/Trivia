@@ -105,7 +105,7 @@
         android:textStyle="italic"
         android:textSize="24sp"
         android:visibility="invisible"
-        android:text="@string/falso_en_el_2016_se_inaugur_el_edificio_conformado_por_mbitos_innovadores_y_por_la_implementaci_n_en_el_mismo_de_tecnolog_as_con_impacto_efectivo_y_positivo_sobre_el_proceso_de_aprendizaje_colaborativo_alineado_a_los_desarrollos"/>
+        tools:text="@string/falso_en_el_2016_se_inaugur_el_edificio_conformado_por_mbitos_innovadores_y_por_la_implementaci_n_en_el_mismo_de_tecnolog_as_con_impacto_efectivo_y_positivo_sobre_el_proceso_de_aprendizaje_colaborativo_alineado_a_los_desarrollos"/>
 
     <ImageView
         android:id="@+id/edposLogo"

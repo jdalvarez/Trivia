@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.jdalvarez.quizapp.data.Question
 import com.jdalvarez.quizapp.repository.Repository
+import com.jdalvarez.quizapp.util.QuizConfig.QUESTIONS_NUMBER
+import com.jdalvarez.quizapp.util.QuizConfig.SHOW_ANSWER_TICK_COUNT
+import com.jdalvarez.quizapp.util.QuizConfig.SHOW_ANSWER_TICK_MS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,29 +18,37 @@ class QuizzViewModel(private val repo: Repository) : ViewModel() {
 
     val navigateToFinishScreen = SingleLiveEvent<Boolean>()
     val questionLiveData = MutableLiveData<Question>()
-    val LoadingLiveData = MutableLiveData<Boolean>()
-    val showAnswerLiveData = MutableLiveData<Boolean>()
+    val loadingLiveData = MutableLiveData<Boolean>()
+    val questionResultLiveData = MutableLiveData<QuestionResult>()
     var scoreLiveData = MutableLiveData<Int>()
 
     private var correctAnswerCount = 0
-    private var nextQuestion = 0
+    private var currentQuestion = -1
     private val questionList = mutableListOf<Question>()
 
     fun onViewCreated() {
         fetchQuestionsList()
         navigateToFinishScreen.value = false
-        showAnswerLiveData.value = false
+        questionResultLiveData.value = QuestionResult.NONE
     }
 
-    fun checkAnswer(click: Boolean) {
-        correctAnswerCount++
-        scoreLiveData.value = correctAnswerCount
-        val timer = object : CountDownTimer(10 * 1000, 1000) {
+    fun onUserAnswer(userAnswer: Boolean) {
+        loadingLiveData.value = true
+        startTimer(userAnswer)
+    }
+
+    private fun startTimer(userAnswer: Boolean) {
+        val timer = object :
+            CountDownTimer(SHOW_ANSWER_TICK_MS * SHOW_ANSWER_TICK_COUNT, SHOW_ANSWER_TICK_MS) {
             override fun onTick(millisUntilFinished: Long) {
-                if (millisUntilFinished < 8000) {
-                    showAnswerLiveData.value = true
+                if (millisUntilFinished < 8 * SHOW_ANSWER_TICK_MS) {
+                    val questionResult = if (userAnswer == questionList[currentQuestion].answer) QuestionResult.RIGHT else QuestionResult.WRONG
+                    questionResultLiveData.value = questionResult
+                    if (questionResult == QuestionResult.RIGHT) {
+                        correctAnswerCount++
+                        scoreLiveData.value = correctAnswerCount
+                    }
                 }
-                //timer running
             }
 
             override fun onFinish() {
@@ -45,7 +56,6 @@ class QuizzViewModel(private val repo: Repository) : ViewModel() {
             }
         }
         timer.start()
-
     }
 
     private fun fetchQuestionsList() {
@@ -61,20 +71,18 @@ class QuizzViewModel(private val repo: Repository) : ViewModel() {
     }
 
     private fun loadNextQuestion() {
-        if (nextQuestion < QUESTIONS_NUMBER) {
-            showAnswerLiveData.value = false
-            questionLiveData.value = questionList[nextQuestion++]
+        if (currentQuestion < QUESTIONS_NUMBER) {
+            questionResultLiveData.value = QuestionResult.NONE
+            questionLiveData.value = questionList[++currentQuestion]
+            loadingLiveData.value = false
         } else {
             navigateToFinishScreen.value = true
             //save score correctAnswerCount
         }
     }
-
-    companion object {
-        private const val QUESTIONS_NUMBER = 5
-    }
-
 }
+
+enum class QuestionResult { RIGHT, WRONG, NONE }
 
 class QuizzViewModelFactory(private val repo: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
