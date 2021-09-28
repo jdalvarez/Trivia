@@ -19,11 +19,11 @@
         android:id="@+id/tv_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:textColor="@color/green"
         android:gravity="center"
         android:text="What country does this flag belong to?"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/epos"/>
 
     <TextView
@@ -92,9 +92,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_true"/>
 
-
-
-
+    <TextView
+        android:id="@+id/tv_rta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_false"
+        android:layout_margin="50dp"
+        android:padding="30dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        android:text="@string/falso_en_el_2016_se_inaugur_el_edificio_conformado_por_mbitos_innovadores_y_por_la_implementaci_n_en_el_mismo_de_tecnolog_as_con_impacto_efectivo_y_positivo_sobre_el_proceso_de_aprendizaje_colaborativo_alineado_a_los_desarrollos"/>
 
     <ImageView
         android:id="@+id/edposLogo"

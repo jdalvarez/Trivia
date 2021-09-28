@@ -19,15 +19,9 @@ import com.jdalvarez.quizapp.presentation.QuizzViewModelFactory
 
 
 class QuizzFragment : Fragment() {
-
     private val app by lazy { requireActivity().application  as MainApplication }
-
-    private val viewModel by viewModels<QuizzViewModel> {
-        QuizzViewModelFactory(app.respository)
-    }
-
+    private val viewModel by viewModels<QuizzViewModel> { QuizzViewModelFactory(app.respository) }
     private lateinit var binding: FragmentQuizzBinding
-
     private val args:QuizzFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -39,6 +33,12 @@ class QuizzFragment : Fragment() {
         setOnClickListeners()
         setupUi()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+        viewModel.onViewCreated()
     }
 
     private fun setupUi() {
@@ -60,13 +60,6 @@ class QuizzFragment : Fragment() {
             setTextColor(resources.getColor(R.color.white))
         }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupObservers()
-        viewModel.onViewCreated()
-    }
-
     private fun loadQuestionData(currentQuestion:Question) {
         binding.tvQuestion.setText(currentQuestion.questionText)
         btnUnSelected(binding.btnFalse)
@@ -106,6 +99,24 @@ class QuizzFragment : Fragment() {
         }
         viewModel.navigateToFinishScreen.observe(viewLifecycleOwner){
             finishQuizz(it)
+        }
+
+        viewModel.showAnswerLiveData.observe(viewLifecycleOwner){
+            showAnswer(it)
+        }
+    }
+
+    private fun showAnswer(showAnswer: Boolean) {
+        if(showAnswer) {
+            binding.tvRta.apply {
+                visibility = View.VISIBLE
+                setTextColor(Color.RED)
+            }
+        } else {
+            binding.tvRta.apply {
+                visibility = View.INVISIBLE
+                setTextColor(Color.RED)
+            }
         }
     }
 

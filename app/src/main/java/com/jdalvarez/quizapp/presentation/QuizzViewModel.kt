@@ -1,5 +1,6 @@
 package com.jdalvarez.quizapp.presentation
 
+import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,11 +11,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class QuizzViewModel(private val repo: Repository): ViewModel() {
+class QuizzViewModel(private val repo: Repository) : ViewModel() {
 
     val navigateToFinishScreen = SingleLiveEvent<Boolean>()
     val questionLiveData = MutableLiveData<Question>()
     val LoadingLiveData = MutableLiveData<Boolean>()
+    val showAnswerLiveData = MutableLiveData<Boolean>()
     var scoreLiveData = MutableLiveData<Int>()
 
     private var correctAnswerCount = 0
@@ -24,22 +26,32 @@ class QuizzViewModel(private val repo: Repository): ViewModel() {
     fun onViewCreated() {
         fetchQuestionsList()
         navigateToFinishScreen.value = false
+        showAnswerLiveData.value = false
     }
 
-    fun checkAnswer(click:Boolean){
-        if (click == questionLiveData.value?.answer){
-            correctAnswerCount++
-            scoreLiveData.value = correctAnswerCount
-            loadNextQuestion()
-        }else{
-            loadNextQuestion()
+    fun checkAnswer(click: Boolean) {
+        correctAnswerCount++
+        scoreLiveData.value = correctAnswerCount
+        val timer = object : CountDownTimer(10 * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                if (millisUntilFinished < 8000) {
+                    showAnswerLiveData.value = true
+                }
+                //timer running
+            }
+
+            override fun onFinish() {
+                loadNextQuestion()
+            }
         }
+        timer.start()
+
     }
 
-    private fun fetchQuestionsList(){
+    private fun fetchQuestionsList() {
         viewModelScope.launch(Dispatchers.IO) {
             val randomQuestions = repo.getRandomQuestions(QUESTIONS_NUMBER)
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 randomQuestions?.let {
                     questionList.addAll(it)
                     loadNextQuestion()
@@ -48,8 +60,9 @@ class QuizzViewModel(private val repo: Repository): ViewModel() {
         }
     }
 
-    private fun loadNextQuestion(){
-        if(nextQuestion < QUESTIONS_NUMBER) {
+    private fun loadNextQuestion() {
+        if (nextQuestion < QUESTIONS_NUMBER) {
+            showAnswerLiveData.value = false
             questionLiveData.value = questionList[nextQuestion++]
         } else {
             navigateToFinishScreen.value = true
