@@ -102,7 +102,6 @@ class FormScreenFragment : Fragment() {
     private fun openQuizFragment(email: String) {
         val toQuizzAction = FormScreenFragmentDirections.actionFormScreenToQuizzFragment2(email)
         findNavController().navigate(toQuizzAction)
-
     }
 
     private fun setupSpinner(degrees: List<String>) {

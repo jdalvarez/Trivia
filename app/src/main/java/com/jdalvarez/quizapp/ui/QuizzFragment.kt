@@ -1,5 +1,6 @@
 package com.jdalvarez.quizapp.ui
 
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.jdalvarez.quizapp.R
 import com.jdalvarez.quizapp.data.Question
 import com.jdalvarez.quizapp.presentation.QuestionResult
 import com.jdalvarez.quizapp.presentation.QuizzViewModelFactory
+import com.jdalvarez.quizapp.util.QuizConfig
 import com.jdalvarez.quizapp.util.QuizConfig.QUESTIONS_NUMBER
 
 
@@ -26,6 +28,7 @@ class QuizzFragment : Fragment() {
     private val viewModel by viewModels<QuizzViewModel> { QuizzViewModelFactory(app.respository) }
     private lateinit var binding: FragmentQuizzBinding
     private val args: QuizzFragmentArgs by navArgs()
+    private var score:Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -94,13 +97,30 @@ class QuizzFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.scoreLiveData.observe(viewLifecycleOwner) { binding.score.setText("Score: $it/${QUESTIONS_NUMBER}") }
+        viewModel.scoreLiveData.observe(viewLifecycleOwner) { binding.score.setText("Score: $it/${QUESTIONS_NUMBER}")
+            score = it}
         viewModel.questionLiveData.observe(viewLifecycleOwner) { loadQuestionData(it) }
         viewModel.loadingLiveData.observe(viewLifecycleOwner) {
             showLoading(it)
         }
         viewModel.navigateToFinishScreen.observe(viewLifecycleOwner) { finishQuizz(it) }
         viewModel.questionResultLiveData.observe(viewLifecycleOwner) { showAnswer(it) }
+        viewModel.progressVisibleLiveData.observe(viewLifecycleOwner){
+            showProgressBar(it)
+        }
+    }
+
+    private fun showProgressBar(isInProgress: Boolean?) {
+        val progressBar = binding.progressBar
+        val currentProgress = 1000
+        if(isInProgress == true){
+            progressBar.setProgress(0)
+            ObjectAnimator.ofInt(progressBar, "progress", currentProgress)
+                .setDuration(QuizConfig.SHOW_ANSWER_DELAY_MS)
+                .start()
+        }else{
+            progressBar.setProgress(0)
+        }
     }
 
     private fun showAnswer(questionResult: QuestionResult) {
@@ -123,16 +143,16 @@ class QuizzFragment : Fragment() {
         }
     }
 
-    private fun toFinishScreen(email: String) {
+    private fun toFinishScreen(email: String, score: Int) {
         val toFinishAction =
-            QuizzFragmentDirections.actionQuizzFragmentToFinishScreenFragment(email)
+            QuizzFragmentDirections.actionQuizzFragmentToFinishScreenFragment(email,score)
         findNavController().navigate(toFinishAction)
     }
 
     private fun finishQuizz(finish: Boolean?) {
         if (finish != null) {
             if (finish) {
-                toFinishScreen(args.email)
+                toFinishScreen(args.email,score)
             }
         }
     }

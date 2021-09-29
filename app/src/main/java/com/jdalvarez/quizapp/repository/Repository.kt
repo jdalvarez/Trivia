@@ -8,6 +8,16 @@ interface Repository {
     fun loadUniveristyDegrees(): List<String>
 
     //firebase
-    suspend fun saveUser(firstName: String, lastName: String, dni: String, email: String, carrera: String, modalidad:String, played:String)
-    suspend fun readUser(): User?
+    suspend fun saveUser(
+        firstName: String?,
+        lastName: String?,
+        dni: String?,
+        email: String?,
+        carrera: String?,
+        modalidad: String?,
+        played: String?
+    )
+
+    suspend fun readUser(email: String): User?
+    suspend fun saveDataUser(email: String, played: String)
 }

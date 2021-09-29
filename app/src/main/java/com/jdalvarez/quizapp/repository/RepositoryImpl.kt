@@ -24,25 +24,51 @@ class RepositoryImpl(
     override fun loadUniveristyDegrees(): List<String> {
         val listType: Type = object : TypeToken<ArrayList<String>>() {}.type
         val jsonString = fileDataSource.loadFileFromAssets(FILE_DEGREES)
-        var result: List<String> =  if (jsonString != null) Gson().fromJson(jsonString, listType) else arrayListOf()
+        val result: List<String> =
+            if (jsonString != null) Gson().fromJson(jsonString, listType) else arrayListOf()
         return result.sorted()
     }
 
     override suspend fun saveUser(
-        firstName: String,
-        lastName: String,
-        dni: String,
-        email: String,
-        carrera: String,
-        modalidad: String,
-        played: String
+        firstName: String?,
+        lastName: String?,
+        dni: String?,
+        email: String?,
+        carrera: String?,
+        modalidad: String?,
+        played: String?
     ) {
         remoteDataSource.saveUser(firstName, lastName, dni, email, carrera, modalidad, played)
     }
 
 
-    override suspend fun readUser(): User? {
-        TODO("Not yet implemented")
+    override suspend fun readUser(email: String): User? {
+        var result: User? = null
+        remoteDataSource.getUser(email)?.let {
+            if (it.exists()) {
+                val firstName = (it.getString("nombre"))
+                val lastName = (it.getString("apellido"))
+                val dni = (it.getString("dni"))
+                val emails = (it.getString("email"))
+                val carrera = (it.getString("carrera"))
+                val modalidad = (it.getString("modalidad"))
+                val jugo = it.getString("jugo")
+                result = User(
+                    firstName,
+                    lastName,
+                    dni,
+                    emails,
+                    carrera,
+                    Modalidad.parse(modalidad),
+                    Play.parse(jugo)
+                )
+            }
+        }
+        return result
+    }
+
+    override suspend fun saveDataUser(email: String, played: String) {
+        remoteDataSource.savePlayResult(email, played)
     }
 
     companion object {

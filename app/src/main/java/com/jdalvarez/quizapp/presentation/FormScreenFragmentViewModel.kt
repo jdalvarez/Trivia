@@ -24,8 +24,8 @@ class FormScreenFragmentViewModel(private val repo: Repository) : ViewModel() {
                 user.dni,
                 user.email,
                 user.carrera,
-                user.modalidad.name,
-                user.result.name
+                user.modalidad?.name,
+                user.result?.name
             )
             withContext(Dispatchers.Main) {
                 loadingLiveData.value = false

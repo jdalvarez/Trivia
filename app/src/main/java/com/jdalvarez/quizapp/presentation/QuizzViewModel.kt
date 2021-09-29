@@ -10,7 +10,6 @@ import com.jdalvarez.quizapp.repository.Repository
 import com.jdalvarez.quizapp.util.QuizConfig.QUESTIONS_NUMBER
 import com.jdalvarez.quizapp.util.QuizConfig.SHOW_ANSWER_DELAY_MS
 import com.jdalvarez.quizapp.util.QuizConfig.SHOW_ANSWER_GO_TO_NEXT_QUESTION_MS
-import com.jdalvarez.quizapp.util.QuizConfig.SHOW_ANSWER_TICK_COUNT
 import com.jdalvarez.quizapp.util.QuizConfig.SHOW_ANSWER_TICK_MS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +22,7 @@ class QuizzViewModel(private val repo: Repository) : ViewModel() {
     val loadingLiveData = MutableLiveData<Boolean>()
     val questionResultLiveData = MutableLiveData<QuestionResult>()
     var scoreLiveData = MutableLiveData<Int>()
+    var progressVisibleLiveData = MutableLiveData<Boolean>()
 
     private var correctAnswerCount = 0
     private var currentQuestion = -1
@@ -32,31 +32,35 @@ class QuizzViewModel(private val repo: Repository) : ViewModel() {
         fetchQuestionsList()
         navigateToFinishScreen.value = false
         questionResultLiveData.value = QuestionResult.NONE
+        progressVisibleLiveData.value = false
     }
 
     fun onUserAnswer(userAnswer: Boolean) {
-        loadingLiveData.value = true
-        val questionResult = if (userAnswer == questionList[currentQuestion].answer) QuestionResult.RIGHT else QuestionResult.WRONG
-        if(questionResult == QuestionResult.RIGHT) correctAnswerCount++
+        if(currentQuestion>=0){
+            loadingLiveData.value = true
+            val questionResult = if (userAnswer == questionList[currentQuestion].answer) QuestionResult.RIGHT else QuestionResult.WRONG
+            if(questionResult == QuestionResult.RIGHT) correctAnswerCount++
 
-        startTimer(questionResult)
+            startTimer(questionResult)
+        }
     }
 
     private fun startTimer(questionResult: QuestionResult) {
         val timer = object : CountDownTimer(SHOW_ANSWER_GO_TO_NEXT_QUESTION_MS, SHOW_ANSWER_TICK_MS) {
             override fun onTick(millisUntilFinished: Long) {
-                if (millisUntilFinished < SHOW_ANSWER_DELAY_MS) {
-                    questionResultLiveData.value = questionResult
+                if (millisUntilFinished <= SHOW_ANSWER_DELAY_MS) {
+                        questionResultLiveData.value = questionResult
                     scoreLiveData.value = correctAnswerCount
                 }
             }
 
             override fun onFinish() {
-
+                progressVisibleLiveData.value=false
                 loadNextQuestion()
             }
         }
         timer.start()
+        progressVisibleLiveData.value = true
     }
 
     private fun fetchQuestionsList() {

@@ -34,5 +34,8 @@
         <argument
             android:name="email"
             app:argType="string" />
+        <argument
+            android:name="score"
+            app:argType="integer" />
     </fragment>
 </navigation>

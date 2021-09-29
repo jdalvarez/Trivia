@@ -4,18 +4,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.FinishScreenFragment"
-    android:background="@color/green">
+    tools:context=".ui.FinishScreenFragment">
+    <ImageView
+        android:id="@+id/ivFondo"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:src="@drawable/fondowide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <ImageView
+        android:id="@+id/evInst"
+        android:layout_width="200dp"
+        android:layout_height="90dp"
+        android:src="@drawable/epositivaicon"
+        app:layout_constraintStart_toStartOf="@id/ivFondo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="100dp" />
+
+    <TextView
+        android:id="@+id/autoevaluamos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nos_autoevaluamos"
+        android:textStyle="bold"
+        android:textSize="29sp"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="@id/evInst"
+        app:layout_constraintTop_toBottomOf="@id/evInst"/>
+
+    <TextView
+        android:id="@+id/seguircreciendo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/para_seguir_creciendo"
+        android:textSize="27sp"
+        android:textColor="@color/green"
+        app:layout_constraintStart_toStartOf="@id/evInst"
+        app:layout_constraintTop_toBottomOf="@id/autoevaluamos"/>
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animContent"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_weight="1"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/ivFondo"/>
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
@@ -23,10 +63,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/animContent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         tools:text="Juan"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:textColor="@color/gray" android:textStyle="bold"
         android:textSize="32sp"/>
 
     <TextView
@@ -36,11 +75,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvUserName"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         tools:text="SCORE: 10/10"
-        android:textColor="@color/white"
+        android:textColor="@color/gray"
         android:textStyle="bold"
         android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/edpos"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:src="@drawable/educacionpositiva"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/siglo"
+        app:layout_constraintTop_toBottomOf="@id/tvScore"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageView
+        android:id="@+id/siglo"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sigloxxi"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@id/edpos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvScore"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
