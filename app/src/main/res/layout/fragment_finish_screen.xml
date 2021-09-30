@@ -1,106 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.FinishScreenFragment">
-    <ImageView
-        android:id="@+id/ivFondo"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:src="@drawable/fondowide"
+    tools:context=".ui.FinishScreenFragment"
+    android:padding="30dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/animContentcard"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"/>
+        app:cardBackgroundColor="@color/green"
+        app:cardCornerRadius="175dp">
 
-    <ImageView
-        android:id="@+id/evInst"
-        android:layout_width="200dp"
-        android:layout_height="90dp"
-        android:src="@drawable/epositivaicon"
-        app:layout_constraintStart_toStartOf="@id/ivFondo"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="100dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="330dp"
+            android:layout_height="330dp"
+            app:cardCornerRadius="165dp"
+            android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/autoevaluamos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nos_autoevaluamos"
-        android:textStyle="bold"
-        android:textSize="29sp"
-        android:textColor="@color/gray"
-        app:layout_constraintStart_toStartOf="@id/evInst"
-        app:layout_constraintTop_toBottomOf="@id/evInst"/>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animContent"
+                android:layout_width="330dp"
+                android:layout_height="330dp"
+                android:layout_weight="1"/>
 
-    <TextView
-        android:id="@+id/seguircreciendo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/para_seguir_creciendo"
-        android:textSize="27sp"
-        android:textColor="@color/green"
-        app:layout_constraintStart_toStartOf="@id/evInst"
-        app:layout_constraintTop_toBottomOf="@id/autoevaluamos"/>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
 
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animContent"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_weight="1"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivFondo"/>
+
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/animContent"
         android:layout_marginTop="20dp"
-        tools:text="Juan"
-        android:textColor="@color/gray" android:textStyle="bold"
-        android:textSize="32sp"/>
+        android:textColor="@color/gray"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/animContentcard"
+        tools:text="Juan" />
 
     <TextView
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUserName"
         android:layout_marginTop="10dp"
-        tools:text="SCORE: 10/10"
         android:textColor="@color/gray"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textSize="20sp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName"
+        tools:text="SCORE: 10/10" />
 
     <ImageView
         android:id="@+id/edpos"
-        android:layout_width="180dp"
+        android:layout_width="220dp"
         android:layout_height="50dp"
         android:src="@drawable/educacionpositiva"
-        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@id/evInst"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/siglo"
-        app:layout_constraintTop_toBottomOf="@id/tvScore"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/evInst"
+        app:layout_constraintBottom_toBottomOf="@id/evInst"/>
+
     <ImageView
         android:id="@+id/siglo"
-        android:layout_width="180dp"
+        android:layout_width="220dp"
         android:layout_height="50dp"
         android:src="@drawable/sigloxxi"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@id/edpos"
+        app:layout_constraintTop_toTopOf="@id/evInst"
+        app:layout_constraintBottom_toBottomOf="@id/evInst"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvScore"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/evInst" />
+
+    <ImageView
+        android:id="@+id/evInst"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/epositivaicon"
+        app:layout_constraintEnd_toStartOf="@id/siglo"
+        app:layout_constraintStart_toEndOf="@id/edpos"
+        app:layout_constraintTop_toTopOf="@id/guideline2"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="886dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

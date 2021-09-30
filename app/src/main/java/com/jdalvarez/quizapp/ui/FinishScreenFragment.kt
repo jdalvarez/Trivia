@@ -14,6 +14,7 @@ import com.jdalvarez.quizapp.data.User
 import com.jdalvarez.quizapp.databinding.FragmentFinishScreenBinding
 import com.jdalvarez.quizapp.presentation.FinishScreenViewModel
 import com.jdalvarez.quizapp.presentation.FinishScreenViewModelFactory
+import com.jdalvarez.quizapp.util.QuizConfig
 
 
 class FinishScreenFragment : Fragment() {
@@ -53,7 +54,7 @@ class FinishScreenFragment : Fragment() {
         if (user != null) {
             binding.tvUserName.text =user.firstName
         }
-        binding.tvScore.text = args.score.toString()
+        binding.tvScore.text = "Score: ${args.score.toString()}/${QuizConfig.QUESTIONS_NUMBER}"
     }
 
     private fun showLoading() {

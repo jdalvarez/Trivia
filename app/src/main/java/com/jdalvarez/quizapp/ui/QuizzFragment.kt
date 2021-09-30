@@ -1,5 +1,7 @@
 package com.jdalvarez.quizapp.ui
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +14,7 @@ import com.jdalvarez.quizapp.presentation.QuizzViewModel
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.button.MaterialButton
 import com.jdalvarez.quizapp.MainApplication
 import com.jdalvarez.quizapp.R
@@ -129,17 +132,48 @@ class QuizzFragment : Fragment() {
                 binding.tvRta.apply {
                     visibility = View.VISIBLE
                     setTextColor(Color.GREEN)
+                    setWinnerAnimation(binding.animQuizContent,R.raw.correct_animation,true)
                 }
             }
             QuestionResult.WRONG -> {
                 binding.tvRta.apply {
                     visibility = View.VISIBLE
                     setTextColor(Color.RED)
+                    setLooserAnimation(binding.animQuizContent, R.raw.wrong_animation,true)
                 }
             }
             QuestionResult.NONE -> {
                 binding.tvRta.visibility = View.INVISIBLE
             }
+        }
+    }
+    private fun setLooserAnimation(imageView: LottieAnimationView, animation: Int, win: Boolean){
+        imageView.apply {
+            visibility = View.VISIBLE
+            setAnimation(animation)
+            playAnimation()
+            addAnimatorListener(object : AnimatorListenerAdapter(){
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    imageView.speed = -1f
+                    imageView.visibility = View.GONE
+                }
+            })
+        }
+    }
+
+    private fun setWinnerAnimation(imageView: LottieAnimationView, animation: Int, win: Boolean){
+        imageView.apply {
+            visibility = View.VISIBLE
+            setAnimation(animation)
+            playAnimation()
+            addAnimatorListener(object : AnimatorListenerAdapter(){
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    imageView.speed = -1f
+                    imageView.visibility = View.GONE
+                }
+            })
         }
     }
 

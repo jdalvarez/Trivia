@@ -23,7 +23,7 @@ class FinishScreenViewModel(private val repo: Repository) : ViewModel() {
     }
 
     private fun userPlayResult(email: String, finalScore: Int) {
-        if (finalScore <= QuizConfig.QUESTIONS_NUMBER) {
+        if (finalScore >= QuizConfig.QUESTIONS_NUMBER) {
             userWinner.value = true
             savePlayResult(email, Play.WON.name)
         } else {
