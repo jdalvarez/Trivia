@@ -32,12 +32,6 @@
     },
     {
       "alcance": "",
-      "questionText": "La oferta de APLV (APRENDIZAJE PARA LA VIDA) consiste en programas no tradicionales con atención a las demandas emergentes del mundo productivo",
-      "answer": true,
-      "rightAnswer": "Verdadero"
-    },
-    {
-      "alcance": "",
       "questionText": "Las competencias institucionales de Siglo 21 son aspiracionales teóricos del perfil del egresado que se desea promover",
       "answer": false,
       "rightAnswer": "Falso. Las competencias institucionales perfilan egresados capaces de actuar estratégicamente de manera global, gestionando el conocimiento y trabajando colaborativamente, impactando con sus acciones en la resolución de problemas complejos con conciencia social"
