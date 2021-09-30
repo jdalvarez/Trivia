@@ -9,24 +9,24 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/animContentcard"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="@dimen/finish_anim_container_size"
+        android:layout_height="@dimen/finish_anim_container_size"
         app:cardBackgroundColor="@color/green"
-        app:cardCornerRadius="175dp"
+        app:cardCornerRadius="@dimen/finish_anim_container_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="330dp"
-            android:layout_height="330dp"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="165dp">
+            android:layout_width="@dimen/finish_anim_size"
+            android:layout_height="@dimen/finish_anim_size"
+            app:cardCornerRadius="@dimen/finish_anim_radius"
+            android:layout_gravity="center">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animContent"
-                android:layout_width="330dp"
-                android:layout_height="330dp"
+                android:layout_width="@dimen/finish_anim_size"
+                android:layout_height="@dimen/finish_anim_size"
                 android:layout_weight="1" />
 
         </androidx.cardview.widget.CardView>
@@ -76,7 +76,7 @@
         android:id="@+id/tvMssg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/finish_msg_margin_top"
         android:gravity="center"
         android:text="@string/final_description"
         android:textColor="@color/green"
@@ -132,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="886dp" />
+        app:layout_constraintGuide_begin="@dimen/finish_guideline_pos" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,8 +15,9 @@
         <ImageView
             android:id="@+id/ivFondo"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="@dimen/form_back_image_height"
             android:layout_marginTop="55dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/fondo_coneau"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,9 +25,8 @@
 
         <ImageView
             android:id="@+id/evInst"
-            android:layout_width="250dp"
-            android:layout_height="110dp"
-            android:layout_marginStart="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/form_coneau_logo_height"
             android:src="@drawable/epositivaicon"
             app:layout_constraintStart_toStartOf="@id/ivFondo"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
             android:layout_marginStart="60dp"
             android:text="@string/nos_autoevaluamos"
             android:textColor="@color/gray"
-            android:textSize="20dp"
+            android:textSize="@dimen/form_title_text_size"
             android:textStyle="bold"
             android:lines="1"
             app:layout_constraintStart_toStartOf="@id/ivFondo"
@@ -51,7 +51,7 @@
             android:layout_marginStart="60dp"
             android:text="@string/para_seguir_creciendo"
             android:textColor="@color/green"
-            android:textSize="28sp"
+            android:textSize="@dimen/form_title1_size"
             app:layout_constraintStart_toStartOf="@id/ivFondo"
             app:layout_constraintTop_toBottomOf="@id/seguirAprendiendo" />
 
@@ -62,7 +62,7 @@
             android:layout_marginStart="60dp"
             android:text="@string/para_seguir_aprendiendo"
             android:textColor="@color/green"
-            android:textSize="28sp"
+            android:textSize="@dimen/form_title1_size"
             app:layout_constraintStart_toStartOf="@id/ivFondo"
             app:layout_constraintTop_toBottomOf="@id/autoevaluamos" />
 
