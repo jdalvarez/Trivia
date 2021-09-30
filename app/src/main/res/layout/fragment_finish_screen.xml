@@ -4,35 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FinishScreenFragment"
-    android:padding="30dp">
+    android:padding="30dp"
+    tools:context=".ui.FinishScreenFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/animContentcard"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:cardBackgroundColor="@color/green"
-        app:cardCornerRadius="175dp">
+        app:cardCornerRadius="175dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="330dp"
             android:layout_height="330dp"
-            app:cardCornerRadius="165dp"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            app:cardCornerRadius="165dp">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animContent"
                 android:layout_width="330dp"
                 android:layout_height="330dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
-
 
 
     <TextView
@@ -61,25 +60,62 @@
         app:layout_constraintTop_toBottomOf="@id/tvUserName"
         tools:text="SCORE: 10/10" />
 
+    <TextView
+        android:id="@+id/tvMssgTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:textSize="50sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvScore"
+        tools:text="Bien Acertaste" />
+
+    <TextView
+        android:id="@+id/tvMssg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/final_description"
+        android:textColor="@color/green"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMssgTitle" />
+
+    <ImageView
+        android:id="@+id/btnRestart"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/restart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline2"
+        app:tint="@color/green"
+        android:layout_marginBottom="30dp"
+        />
+
     <ImageView
         android:id="@+id/edpos"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:src="@drawable/educacionpositiva"
+        app:layout_constraintBottom_toBottomOf="@id/evInst"
         app:layout_constraintEnd_toStartOf="@id/evInst"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/evInst"
-        app:layout_constraintBottom_toBottomOf="@id/evInst"/>
+        app:layout_constraintTop_toTopOf="@id/evInst" />
 
     <ImageView
         android:id="@+id/siglo"
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:src="@drawable/sigloxxi"
-        app:layout_constraintTop_toTopOf="@id/evInst"
         app:layout_constraintBottom_toBottomOf="@id/evInst"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/evInst" />
+        app:layout_constraintStart_toEndOf="@id/evInst"
+        app:layout_constraintTop_toTopOf="@id/evInst" />
 
     <ImageView
         android:id="@+id/evInst"
@@ -89,7 +125,7 @@
         android:src="@drawable/epositivaicon"
         app:layout_constraintEnd_toStartOf="@id/siglo"
         app:layout_constraintStart_toEndOf="@id/edpos"
-        app:layout_constraintTop_toTopOf="@id/guideline2"/>
+        app:layout_constraintTop_toTopOf="@id/guideline2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

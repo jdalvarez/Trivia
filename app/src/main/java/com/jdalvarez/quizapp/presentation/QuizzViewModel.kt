@@ -48,8 +48,8 @@ class QuizzViewModel(private val repo: Repository) : ViewModel() {
     private fun startTimer(questionResult: QuestionResult) {
         val timer = object : CountDownTimer(SHOW_ANSWER_GO_TO_NEXT_QUESTION_MS, SHOW_ANSWER_TICK_MS) {
             override fun onTick(millisUntilFinished: Long) {
-                if (millisUntilFinished <= SHOW_ANSWER_DELAY_MS) {
-                        questionResultLiveData.value = questionResult
+                if (millisUntilFinished <= SHOW_ANSWER_DELAY_MS && millisUntilFinished > (SHOW_ANSWER_DELAY_MS * 0.8)) {
+                    questionResultLiveData.value = questionResult
                     scoreLiveData.value = correctAnswerCount
                 }
             }

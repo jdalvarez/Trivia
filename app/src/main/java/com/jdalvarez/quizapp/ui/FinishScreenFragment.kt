@@ -1,11 +1,14 @@
 package com.jdalvarez.quizapp.ui
 
+import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.lottie.LottieAnimationView
 import com.jdalvarez.quizapp.MainApplication
@@ -35,11 +38,16 @@ class FinishScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpObservers()
         viewModel.onViewCreated(args.email, args.score)
-
+        binding.btnRestart.setOnClickListener {
+            val toHome =
+                FinishScreenFragmentDirections.actionFinishScreenFragmentToFormScreen()
+            findNavController().navigate(toHome)
+        }
     }
     private fun setUpObservers(){
-        viewModel.userWinner.observe(viewLifecycleOwner){
+        viewModel.userWinLose.observe(viewLifecycleOwner){
             setAnimation(it)
+            showWinLoseText(it)
         }
         viewModel.loadingLiveData.observe(viewLifecycleOwner){
             showLoading()
@@ -48,6 +56,14 @@ class FinishScreenFragment : Fragment() {
             showUserInfo(it)
         }
 
+    }
+
+    private fun showWinLoseText(userWon: Boolean) {
+        binding.tvMssgTitle.visibility = if(userWon) View.VISIBLE else View.INVISIBLE
+
+        if(userWon) {
+            binding.tvMssgTitle.text = resources.getString(R.string.final_user_wins_title)
+        }
     }
 
     private fun showUserInfo(user: User?) {

@@ -7,10 +7,11 @@
         <entry key="app/src/main/res/drawable/fondo.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable/press_btn_bg.xml" value="0.553125" />
         <entry key="app/src/main/res/drawable/rectangle.xml" value="0.21614583333333334" />
+        <entry key="app/src/main/res/drawable/restart.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable/un_press_btn_bg.xml" value="0.553125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
-        <entry key="app/src/main/res/layout/fragment_finish_screen.xml" value="0.4836165048543689" />
-        <entry key="app/src/main/res/layout/fragment_form_screen.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_finish_screen.xml" value="0.4059322033898305" />
+        <entry key="app/src/main/res/layout/fragment_form_screen.xml" value="0.45375335120643434" />
         <entry key="app/src/main/res/layout/fragment_quizz.xml" value="0.5" />
       </map>
     </option>

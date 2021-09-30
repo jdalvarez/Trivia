@@ -16,4 +16,6 @@
     <string name="username">Username:</string>
     <string name="score">Score:</string>
     <string name="falso_en_el_2016_se_inaugur_el_edificio_conformado_por_mbitos_innovadores_y_por_la_implementaci_n_en_el_mismo_de_tecnolog_as_con_impacto_efectivo_y_positivo_sobre_el_proceso_de_aprendizaje_colaborativo_alineado_a_los_desarrollos">Falso. En el 2016 se inauguró el edificio conformado por ámbitos innovadores y por la implementación en el mismo de tecnologías con impacto efectivo y positivo sobre el proceso de aprendizaje colaborativo alineado a los desarrollos</string>
+    <string name="final_user_wins_title">Bien, acertaste!</string>
+    <string name="final_description">Gracias por ser parte del proceso de autoevaluacion</string>
 </resources>

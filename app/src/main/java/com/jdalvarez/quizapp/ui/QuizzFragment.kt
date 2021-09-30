@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import com.jdalvarez.quizapp.databinding.FragmentQuizzBinding
 import com.jdalvarez.quizapp.presentation.QuizzViewModel
 import androidx.fragment.app.viewModels
@@ -131,7 +132,7 @@ class QuizzFragment : Fragment() {
             QuestionResult.RIGHT -> {
                 binding.tvRta.apply {
                     visibility = View.VISIBLE
-                    setTextColor(Color.GREEN)
+                    setTextColor(resources.getColor(R.color.green))
                     setWinnerAnimation(binding.animQuizContent,R.raw.correct_animation,true)
                 }
             }

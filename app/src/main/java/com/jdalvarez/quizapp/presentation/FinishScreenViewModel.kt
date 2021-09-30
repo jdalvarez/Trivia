@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class FinishScreenViewModel(private val repo: Repository) : ViewModel() {
-    val userWinner = MutableLiveData<Boolean>()
+    val userWinLose = MutableLiveData<Boolean>()
     val loadingLiveData = MutableLiveData<Boolean>()
     val userLiveData = MutableLiveData<User>()
 
@@ -24,10 +24,10 @@ class FinishScreenViewModel(private val repo: Repository) : ViewModel() {
 
     private fun userPlayResult(email: String, finalScore: Int) {
         if (finalScore >= QuizConfig.QUESTIONS_NUMBER) {
-            userWinner.value = true
+            userWinLose.value = true
             savePlayResult(email, Play.WON.name)
         } else {
-            userWinner.value = false
+            userWinLose.value = false
             savePlayResult(email, Play.LOST.name)
         }
 
